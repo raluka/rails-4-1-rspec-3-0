@@ -3,7 +3,7 @@ FactoryGirl.define do
     # this tells FG to create a new Contact on the fly for this phone to belongs to, if none was passed
     association :contact
 
-    phone '123-456-7890'
+    phone { Faker::PhoneNumber.phone_number }
 
     factory :home_phone do
       phone_type 'home'
