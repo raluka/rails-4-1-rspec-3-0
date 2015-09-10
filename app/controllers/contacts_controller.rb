@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :authenticate, except: [:index, :show]
+  # before_action :authenticate, except: [:index, :show]
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
@@ -15,6 +15,12 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @contact = Contact.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @contact }
+    end
   end
 
   # GET /contacts/new
@@ -23,10 +29,16 @@ class ContactsController < ApplicationController
     %w(home office mobile).each do |phone|
       @contact.phones.build(phone_type: phone)
     end
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @contact }
+    end
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact = Contact.find(params[:id])
   end
 
   # POST /contacts
