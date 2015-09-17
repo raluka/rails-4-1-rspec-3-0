@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature 'User management' do
-  scenario 'adds a  new user' do
+  scenario 'adds a  new user', js: true do
     admin = create(:admin)
     sign_in admin
-    
+
     visit root_path
     expect{
       click_link 'Users'
