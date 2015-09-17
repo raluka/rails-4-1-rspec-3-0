@@ -5,7 +5,7 @@ RSpec::Matchers.define :require_login do |expected|
   end
 
   failure_message do |actual|
-    "expected not to require login to access the method"
+    "expected to require login to access the method"
   end
 
   failure_message_when_negated do |actual|
